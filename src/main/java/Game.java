@@ -33,7 +33,10 @@ public class Game {
             int choice = sc.nextInt();
             ticBoard.updateBoard(choice, 1, ticBoard.getTicBoard(), ticBoard.size);
             ticBoard.printBoard();
-            if (ticBoard.horizontalWin(ticBoard.getTicBoard(), size, 1)) {
+//            if (ticBoard.horizontalWin(ticBoard.getTicBoard(), size) ) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
+//                System.exit(32);
+//            }
+            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size)) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
                 System.exit(32);
             }
 
@@ -41,9 +44,14 @@ public class Game {
             int choice2 = sc.nextInt();
             ticBoard.updateBoard(choice2, 2, ticBoard.getTicBoard(), ticBoard.size);
             ticBoard.printBoard();
-            if (ticBoard.horizontalWin(ticBoard.getTicBoard(), size, 2)) {
+//            if (ticBoard.horizontalWin(ticBoard.getTicBoard(), size)) { //  || ticBoard.verticalWin(ticBoard.getTicBoard(), size)
+//                System.exit(32);
+//            }
+            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size)) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
                 System.exit(32);
             }
+
+//            clearTerminal();
 
 
         }

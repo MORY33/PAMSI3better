@@ -74,32 +74,93 @@ public class Board implements Cloneable{
 
 
 
-    public boolean horizontalWin(Mark[][] board, int size, int player){
-        Mark character;
-        if (player == 1){
-            character = Mark.XTYPE;
-        }
-        else{
-            character = Mark.OTYPE;
-        }
+    public boolean horizontalWin(Mark[][] board, int size) {
 
-
-        int counter = 0;
         for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size-1; col++) {
-                if((board[row][col] == board[row][col+1])&&(board[row][col] != Mark.BLANK)){
-                    counter++;
+            int counter = 1;
+            for (int col = 0; col < size - 1; col++) {
+                if (board[row][col] == board[row][col + 1] && board[row][row] != Mark.BLANK) {
+                    counter += 1;
                 }
-                if(counter==size){
-                    winner = character;
+                if (counter == size) {
+                    if (board[row][col] == Mark.XTYPE) {
+                        winner = Mark.XTYPE;
+                    } else winner = Mark.OTYPE;
                     System.out.println("And the winner is " + winner);
                     return true;
                 }
             }
         }
-
         return false;
     }
+
+
+    public boolean verticalWin(Mark[][] board, int size) {
+        for (int i = 0; i < size; i++) {
+            int counter = 1;
+            for (int j = 0; j < size - 1; j++) {
+                if ((board[j][i] == board[j+1][i]) && (board[i][i] != Mark.BLANK)) {
+                    counter++;
+                }
+                if (counter == size) {
+                    if (board[j][i] == Mark.XTYPE) {
+                        winner = Mark.XTYPE;
+                    } else winner = Mark.OTYPE;
+                    System.out.println("And the winner is " + winner);
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
+
+
+    public boolean leftRightDiagonalWin(Mark[][] board, int size){
+
+        int counter=1;
+        for (int i = 0; i < size-1; i++) {
+            if(board[i][i] == board[i+1][i+1] && board[i][i]!=Mark.BLANK){
+                counter++;
+            }
+            if (counter==size){
+                if (board[i][i] == Mark.XTYPE) {
+                    winner = Mark.XTYPE;
+                } else winner = Mark.OTYPE;
+                System.out.println("And the winner is " + winner);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //must check from rear to front
+    public boolean rightLeftDiagonalWin(Mark[][] board, int size){
+
+        for (int row = 0; row < size-1; row++) {
+            int counter=1;
+            for (int col = 0; col < size+1; col++){
+                if ((board[row][col] == board[row+1][col-1]) && (board[row][row] != Mark.BLANK)) {
+                    counter++;
+                }
+//                if(col+row == size-1 && board[row][row]!=Mark.BLANK){
+//                    counter++;
+//                }
+                if (counter==size){
+                    if (board[row][col] == Mark.XTYPE) {
+                        winner = Mark.XTYPE;
+                    } else winner = Mark.OTYPE;
+                    System.out.println("And the winner is " + winner);
+                    return true;
+                }
+
+            }
+            }
+        return false;
+    }
+
+
 
     public void Helpboard(int size){
         int board[][] = new int[size][size];

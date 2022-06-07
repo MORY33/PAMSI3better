@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+
 public class HumanGamer implements Gamer{
     @Override
     public void makeMove(Board ticBoard, int size) {
@@ -7,17 +9,21 @@ public class HumanGamer implements Gamer{
         int choice = 420;
             int counterx = 0;
             while(choice!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice)){
-                System.out.println("Player's 1 turn (x)");
-                choice = sc.nextInt();
-                if(ticBoard.isTaken(choice, ticBoard.getTicBoard())){
-                    System.out.println("Make sure, that your move is legal!");
-                }
+
+                if (counterx!=3) System.out.println("Player's 1 turn (x)");
                 if (counterx == 3) {
-                    System.out.println( "Ee, you'd better watch anime..." );
+                    System.out.println(RED + "Ee, you'd better watch anime..." + RESET );
                     System.exit(420);
                 }
-
+                choice = sc.nextInt();
                 counterx++;
+                if(ticBoard.isTaken(choice, ticBoard.getTicBoard()) && counterx!=3){
+                    System.out.println(YELLOW + "Make sure, that your move is legal! \nTRY AGAIN " + abs(counterx-3) + " attempts left" + RESET);
+                }
+
+
+
+
             }
 
 

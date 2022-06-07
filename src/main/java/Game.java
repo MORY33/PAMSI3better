@@ -31,23 +31,32 @@ public class Game {
 
 
             int choice = sc.nextInt();
+            if(ticBoard.isTaken(choice, ticBoard.getTicBoard())){
+                System.out.println("This place is taken!");
+            }
+
             ticBoard.updateBoard(choice, 1, ticBoard.getTicBoard(), ticBoard.size);
             ticBoard.printBoard();
-//            if (ticBoard.horizontalWin(ticBoard.getTicBoard(), size) ) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
-//                System.exit(32);
-//            }
-            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size)) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
+
+
+
+            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
+                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
                 System.exit(32);
             }
 
 
             int choice2 = sc.nextInt();
+            if(ticBoard.isTaken(choice2, ticBoard.getTicBoard())){
+                System.out.println("This place is taken!");
+            }
             ticBoard.updateBoard(choice2, 2, ticBoard.getTicBoard(), ticBoard.size);
             ticBoard.printBoard();
-//            if (ticBoard.horizontalWin(ticBoard.getTicBoard(), size)) { //  || ticBoard.verticalWin(ticBoard.getTicBoard(), size)
-//                System.exit(32);
-//            }
-            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size)) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
+
+
+
+            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
+                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {  //|| ticBoard.verticalWin(ticBoard.getTicBoard(), size)
                 System.exit(32);
             }
 

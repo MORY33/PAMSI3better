@@ -138,28 +138,44 @@ public class Board implements Cloneable{
     //must check from rear to front
     public boolean rightLeftDiagonalWin(Mark[][] board, int size){
 
-        for (int row = 0; row < size-1; row++) {
-            int counter=1;
-            for (int col = 0; col < size+1; col++){
-                if ((board[row][col] == board[row+1][col-1]) && (board[row][row] != Mark.BLANK)) {
-                    counter++;
+        int xcounter=0;
+        int ocounter=0;
+        for (int i = 0; i < size; i++) {
+
+            for (int j = 0; j < size; j++) {
+                if(i+j == size-1 && board[i][j] == Mark.XTYPE){
+                    xcounter++;
                 }
-//                if(col+row == size-1 && board[row][row]!=Mark.BLANK){
-//                    counter++;
-//                }
-                if (counter==size){
-                    if (board[row][col] == Mark.XTYPE) {
+                if(i+j == size-1 && board[i][j] == Mark.OTYPE){
+                    ocounter++;
+                }
+                if(ocounter == size || xcounter == size){
+                    if (board[i][j] == Mark.XTYPE) {
                         winner = Mark.XTYPE;
                     } else winner = Mark.OTYPE;
                     System.out.println("And the winner is " + winner);
                     return true;
                 }
+            }
+        }
 
-            }
-            }
         return false;
     }
 
+
+
+    public boolean isTaken(int choice, Mark[][] board){
+        int g = 1 ;
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                if (choice == g && (board[row][col] == Mark.XTYPE || board[row][col] == Mark.OTYPE)) {
+                    return true;
+                }
+                g+=1;
+            }
+        }
+        return false;
+    }
 
 
     public void Helpboard(int size){
@@ -186,6 +202,8 @@ public class Board implements Cloneable{
         System.out.println("");
 
     }
+
+
 
 
     @Override

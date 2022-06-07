@@ -20,6 +20,8 @@ public class Game {
     public void startGame() throws InterruptedException {
         chooseOption();
         Board ticBoard = new Board(size);
+        HumanGamer humanPlayer = new HumanGamer();
+        AIGamer AIPlayer = new AIGamer();
         boolean isWon = false;
 //        ticBoard.Helpboard(size);
 //        ticBoard.printBoard();
@@ -29,80 +31,71 @@ public class Game {
         while(!isWon){
 //            ticBoard.printBoard();
             ticBoard.Helpboard(size);
-
-
-            int choice = 420;
-            int counterx = 0;
-            while(choice!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice)){
-                System.out.println("Player's 1 turn (x)");
-                choice = sc.nextInt();
-                if(ticBoard.isTaken(choice, ticBoard.getTicBoard())){
-                    System.out.println("Make sure, that your move is legal!");
-                }
-                if (counterx == 3) {
-                    System.out.println(RED + "Ee, you'd better watch anime..." + RESET);
-                    System.exit(420);
-                }
-
-                counterx++;
-            }
-
-
-            ticBoard.updateBoard(choice, 1, ticBoard.getTicBoard(), ticBoard.size);
-            ticBoard.printBoard();
+            humanPlayer.makeMove(ticBoard, size);
+            AIPlayer.makeMove(ticBoard, size);
 
 
 
-            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
-                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {
-                System.exit(0);
-            }
-
-
-            int choice2 = 420;
-            int counter = 0;
-            while(choice2!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice2)){
-                System.out.println("Player's 2 turn (o)");
-                choice2 = sc.nextInt();
-                if(ticBoard.isTaken(choice2, ticBoard.getTicBoard())){
-                    System.out.println("Make sure, that your move is legal!");
-                }
-                if (counter == 3) {
-                    System.out.println(RED + "Ee, you'd better watch anime..." + RESET);
-                    System.exit(420);
-                }
-
-                counter++;
-            }
-
-
-
-            ticBoard.updateBoard(choice2, 2, ticBoard.getTicBoard(), ticBoard.size);
-            ticBoard.printBoard();
-
-
-
-            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
-                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {
-                System.exit(0);
-            }
-
-//            clearTerminal();
+//            int choice = 420;
+//            int counterx = 0;
+//            while(choice!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice)){
+//                System.out.println("Player's 1 turn (x)");
+//                choice = sc.nextInt();
+//                if(ticBoard.isTaken(choice, ticBoard.getTicBoard())){
+//                    System.out.println("Make sure, that your move is legal!");
+//                }
+//                if (counterx == 3) {
+//                    System.out.println(RED + "Ee, you'd better watch anime..." + RESET);
+//                    System.exit(420);
+//                }
+//
+//                counterx++;
+//            }
+//
+//
+//            ticBoard.updateBoard(choice, 1, ticBoard.getTicBoard(), ticBoard.size);
+//            ticBoard.printBoard();
+//
+//
+//
+//            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
+//                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {
+//                System.exit(0);
+//            }
+//
+//
+//            int choice2 = 420;
+//            int counter = 0;
+//            while(choice2!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice2)){
+//                System.out.println("Player's 2 turn (o)");
+//                choice2 = sc.nextInt();
+//                if(ticBoard.isTaken(choice2, ticBoard.getTicBoard())){
+//                    System.out.println("Make sure, that your move is legal!");
+//                }
+//                if (counter == 3) {
+//                    System.out.println(RED + "Ee, you'd better watch anime..." + RESET);
+//                    System.exit(420);
+//                }
+//
+//                counter++;
+//            }
+//
+//
+//
+//            ticBoard.updateBoard(choice2, 2, ticBoard.getTicBoard(), ticBoard.size);
+//            ticBoard.printBoard();
+//
+//
+//
+//            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
+//                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {
+//                System.exit(0);
+//            }
 
         }
 
-
-
-
-
         Thread.sleep(1000);
         ticBoard.printBoard();
-
-//        if(ticBoard.horizontalWin(ticBoard.getTicBoard(), size, 1)){
-//            System.exit(32);
-//        }
-
-
     }
 
 

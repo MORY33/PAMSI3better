@@ -163,6 +163,19 @@ public class Board implements Cloneable{
     }
 
 
+    public int availableMove(Mark[][] board, int size, int choice){
+        int g = 1 ;
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                if(g==choice && !(board[row][col] == Mark.XTYPE || board[row][col] == Mark.OTYPE)){
+                    return choice;
+                }
+                g+=1;
+            }
+        }
+        return 0;
+    }
+
 
     public boolean isTaken(int choice, Mark[][] board){
         int g = 1 ;

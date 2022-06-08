@@ -27,17 +27,16 @@ public class Game {
 
 //        Scanner sc = new Scanner(System.in);
 
-
         while(!isWon){
             if(choice==1){
                 ticBoard.Helpboard(size);
-                humanPlayer.makeMove(ticBoard, size);
-                AIPlayer.makeMove(ticBoard, size);
+                humanPlayer.makeMove(ticBoard);
+                AIPlayer.makeMove(ticBoard);
             }
             else {
                 ticBoard.Helpboard(size);
-                AIPlayer.makeMove(ticBoard, size);
-                humanPlayer.makeMove(ticBoard, size);
+                AIPlayer.makeMove(ticBoard);
+                humanPlayer.makeMove(ticBoard);
             }
         }
         Thread.sleep(1000);

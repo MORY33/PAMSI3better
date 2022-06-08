@@ -4,7 +4,7 @@ import static java.lang.Math.abs;
 
 public class HumanGamer implements Gamer{
     @Override
-    public void makeMove(Board ticBoard, int size) {
+    public void makeMove(Board ticBoard) {
         Scanner sc = new Scanner(System.in);
         int choice = 420;
             int counterx = 0;
@@ -28,9 +28,15 @@ public class HumanGamer implements Gamer{
 
 
 
-            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
-                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size) || ticBoard.checkDraw(ticBoard.getTicBoard(),size)) {
-                System.exit(0);
-            }
+        if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), ticBoard.size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), ticBoard.size)
+                || ticBoard.horizontalWin(ticBoard.getTicBoard(), ticBoard.size) || ticBoard.verticalWin(ticBoard.getTicBoard(), ticBoard.size)
+                || ticBoard.checkDraw(ticBoard.getTicBoard(),ticBoard.size)) {
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void makeMove(Board ticBoard, Mark sign) {
+
     }
 }

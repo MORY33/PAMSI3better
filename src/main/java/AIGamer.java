@@ -6,7 +6,7 @@ import static java.lang.Math.abs;
 public class AIGamer implements Gamer{
 
     @Override
-    public void makeMove(Board ticBoard, int size) {
+    public void makeMove(Board ticBoard) {
             Scanner sc = new Scanner(System.in);
             int choice2 = 420;
             int counter = 0;
@@ -27,11 +27,26 @@ public class AIGamer implements Gamer{
             ticBoard.printBoard();
 
 
-            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
-                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size) || ticBoard.checkDraw(ticBoard.getTicBoard(),size)) {
+            if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), ticBoard.size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), ticBoard.size)
+                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), ticBoard.size) || ticBoard.verticalWin(ticBoard.getTicBoard(), ticBoard.size)
+                    || ticBoard.checkDraw(ticBoard.getTicBoard(),ticBoard.size)) {
                 System.exit(0);
             }
     }
+
+
+
+    @Override
+    public void makeMove(Board board, Mark sign) {
+
+        int[] choice = MiniMax.getBestMove(board);
+        board.updateBoard(choice[0], board.getTicBoard(), board.size, sign);
+    }
+
+
+
+
+
 }
 
 

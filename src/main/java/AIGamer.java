@@ -21,21 +21,18 @@ public class AIGamer implements Gamer{
                 if(ticBoard.isTaken(choice2, ticBoard.getTicBoard())&& counter!=3){
                     System.out.println(YELLOW + "Make sure, that your move is legal! \nTRY AGAIN " + abs(counter-3) + " attempts left" + RESET );
                 }
-
-
-
             }
 
-
-
-            ticBoard.updateBoard(choice2, 2, ticBoard.getTicBoard(), ticBoard.size);
+            ticBoard.updateBoard(choice2, ticBoard.getTicBoard(), ticBoard.size, Mark.OTYPE);
             ticBoard.printBoard();
 
 
-
             if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
-                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {
+                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size) || ticBoard.checkDraw(ticBoard.getTicBoard(),size)) {
                 System.exit(0);
             }
     }
 }
+
+
+

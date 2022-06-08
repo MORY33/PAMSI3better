@@ -20,20 +20,16 @@ public class HumanGamer implements Gamer{
                 if(ticBoard.isTaken(choice, ticBoard.getTicBoard()) && counterx!=3){
                     System.out.println(YELLOW + "Make sure, that your move is legal! \nTRY AGAIN " + abs(counterx-3) + " attempts left" + RESET);
                 }
-
-
-
-
             }
 
 
-            ticBoard.updateBoard(choice, 1, ticBoard.getTicBoard(), ticBoard.size);
+            ticBoard.updateBoard(choice,  ticBoard.getTicBoard(), ticBoard.size, Mark.XTYPE);
             ticBoard.printBoard();
 
 
 
             if (ticBoard.rightLeftDiagonalWin(ticBoard.getTicBoard(), size) || ticBoard.leftRightDiagonalWin(ticBoard.getTicBoard(), size)
-                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size)) {
+                    || ticBoard.horizontalWin(ticBoard.getTicBoard(), size) || ticBoard.verticalWin(ticBoard.getTicBoard(), size) || ticBoard.checkDraw(ticBoard.getTicBoard(),size)) {
                 System.exit(0);
             }
     }

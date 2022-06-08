@@ -3,9 +3,11 @@ public class Board implements Cloneable{
     public Mark[][] ticBoard;
     public Mark winner;
     public int size;
+    public int availableMoves;
 
     public Board(int size){
         this.size = size;
+        this.availableMoves = size*size;
         ticBoard = new Mark[size][size];
 //        Mark.BLANK = Mark.valueOf("\uD83D\uDD33");
         for (int row = 0; row < size; row++) {
@@ -18,13 +20,17 @@ public class Board implements Cloneable{
     }
 
 
-    public void updateBoard(int position, int player, Mark[][] gameBoard, int size){
+    public void updateBoard(int position, Mark[][] gameBoard, int size, Mark mark){
         Mark character;
-        if (player == 1){
+
+        if (mark == Mark.XTYPE){
             character = Mark.XTYPE;
         }
-        else{
+        else if (mark == Mark.OTYPE){
             character = Mark.OTYPE;
+        }
+        else{
+            character = Mark.BLANK;
         }
 
         int g = 1 ;
@@ -32,6 +38,9 @@ public class Board implements Cloneable{
             for (int col = 0; col < gameBoard[row].length; col++) {
                 if (position == g) {
                     gameBoard[row][col] = character;
+//                    System.out.println(size);
+                    availableMoves--;
+//                    System.out.println(availableMoves);
                 }
                 g+=1;
             }
@@ -176,6 +185,19 @@ public class Board implements Cloneable{
         return 0;
     }
 
+    public boolean checkDraw(Mark[][] board, int size){
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if(board[i][j] == Mark.BLANK){
+                    return false;
+                }
+            }
+        }
+        winner=Mark.BLANK;
+        System.out.println("Nobody wins. It's draw...");
+        return true;
+    }
+
 
     public boolean isTaken(int choice, Mark[][] board){
         int g = 1 ;
@@ -215,6 +237,26 @@ public class Board implements Cloneable{
         System.out.println("");
 
     }
+
+
+
+    public boolean anyMovesAvailable() {
+        return availableMoves > 0;
+    }
+//
+//    public Mark getMarkAt(int row, int column) {
+//        return board[row][column];
+//    }
+//
+//    public boolean isTileMarked(int row, int column) {
+//        return getTicBoard()[row][column].isTaken();
+//    }
+//
+//    public void setMarkAt(int row, int column, Mark newMark) {
+//        board[row][column] = newMark;
+//    }
+
+
 
 
 

@@ -4,13 +4,13 @@ import static java.lang.Math.abs;
 
 public class HumanGamer implements Gamer{
     @Override
-    public void makeMove(Board ticBoard) {
+    public void makeMove(Board ticBoard, Mark sign) {
         Scanner sc = new Scanner(System.in);
         int choice = 420;
             int counterx = 0;
             while(choice!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice)){
 
-                if (counterx!=3) System.out.println("Player's 1 turn (x)");
+                if (counterx!=3) System.out.println("Player's 1 turn: " + sign);
                 if (counterx == 3) {
                     System.out.println(RED + "Ee, you'd better watch anime..." + RESET );
                     System.exit(420);
@@ -23,7 +23,7 @@ public class HumanGamer implements Gamer{
             }
 
 
-            ticBoard.updateBoard(choice,  ticBoard.getTicBoard(), ticBoard.size, Mark.XTYPE);
+            ticBoard.updateBoard(choice,  ticBoard.getTicBoard(), ticBoard.size, sign);
             ticBoard.printBoard();
 
 
@@ -35,8 +35,8 @@ public class HumanGamer implements Gamer{
         }
     }
 
-    @Override
-    public void makeMove(Board ticBoard, Mark sign) {
-
-    }
+//    @Override
+//    public void makeMove(Board ticBoard) {
+//
+//    }
 }

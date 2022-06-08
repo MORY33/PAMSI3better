@@ -6,12 +6,12 @@ import static java.lang.Math.abs;
 public class AIGamer implements Gamer{
 
     @Override
-    public void makeMove(Board ticBoard) {
+    public void makeMove(Board ticBoard, Mark sign) {
             Scanner sc = new Scanner(System.in);
             int choice2 = 420;
             int counter = 0;
             while(choice2!=ticBoard.availableMove(ticBoard.getTicBoard(), ticBoard.size, choice2)){
-                if (counter!=3) System.out.println("Player's 2 turn (o)");
+                if (counter!=3) System.out.println("Player's 2 turn: "+sign);
                 if (counter == 3) {
                     System.out.println(RED + "Ee, you'd better watch anime..." + RESET);
                     System.exit(420);
@@ -23,7 +23,7 @@ public class AIGamer implements Gamer{
                 }
             }
 
-            ticBoard.updateBoard(choice2, ticBoard.getTicBoard(), ticBoard.size, Mark.OTYPE);
+            ticBoard.updateBoard(choice2, ticBoard.getTicBoard(), ticBoard.size, sign);
             ticBoard.printBoard();
 
 
@@ -36,12 +36,12 @@ public class AIGamer implements Gamer{
 
 
 
-    @Override
-    public void makeMove(Board board, Mark sign) {
-
-        int[] choice = MiniMax.getBestMove(board);
-        board.updateBoard(choice[0], board.getTicBoard(), board.size, sign);
-    }
+//    @Override
+//    public void makeMove(Board board, Mark sign) {
+//
+//        int[] choice = MiniMax.getBestMove(board);
+//        board.updateBoard(choice[0], board.getTicBoard(), board.size, sign);
+//    }
 
 
 

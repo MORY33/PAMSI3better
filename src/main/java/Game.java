@@ -27,16 +27,28 @@ public class Game {
 
 //        Scanner sc = new Scanner(System.in);
 
+//        while(!isWon){
+//            if(choice==1){
+//                ticBoard.Helpboard(size);
+//                humanPlayer.makeMove(ticBoard);
+//                AIPlayer.makeMove(ticBoard);
+//            }
+//            else {
+//                ticBoard.Helpboard(size);
+//                AIPlayer.makeMove(ticBoard);
+//                humanPlayer.makeMove(ticBoard);
+//            }
+//        }
         while(!isWon){
             if(choice==1){
                 ticBoard.Helpboard(size);
-                humanPlayer.makeMove(ticBoard);
-                AIPlayer.makeMove(ticBoard);
+                humanPlayer.makeMove(ticBoard, Mark.OTYPE);
+                AIPlayer.makeMove(ticBoard, Mark.XTYPE);
             }
             else {
                 ticBoard.Helpboard(size);
-                AIPlayer.makeMove(ticBoard);
-                humanPlayer.makeMove(ticBoard);
+                AIPlayer.makeMove(ticBoard, Mark.OTYPE);
+                humanPlayer.makeMove(ticBoard, Mark.XTYPE);
             }
         }
         Thread.sleep(1000);

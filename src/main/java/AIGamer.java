@@ -1,9 +1,8 @@
-import java.util.Scanner;
-
-import static java.lang.Math.abs;
-
 
 public class AIGamer implements Gamer{
+
+
+//JUST FOR TESTING PURPOSE
 
 //    @Override
 //    public void makeMove(Board ticBoard, Mark sign) {
@@ -51,10 +50,6 @@ public class AIGamer implements Gamer{
             }
 
     }
-
-
-
-
 
 }
 

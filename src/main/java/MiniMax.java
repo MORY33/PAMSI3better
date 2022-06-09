@@ -89,7 +89,6 @@ public class MiniMax {
 
 
     private static int evaluateBoard(Board board) {
-        int rowSum = 0;
 
 
         for (int row = 0; row < board.size; row++) {

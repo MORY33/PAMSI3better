@@ -4,14 +4,9 @@ public class Game {
 
     public static final String RESET = "\033[0m";  // Text Reset
     //colors
-    public static final String BLACK = "\033[0;30m";   // BLACK
-    public static final String RED = "\033[0;31m";     // RED
     public static final String GREEN = "\033[0;32m";   // GREEN
     public static final String YELLOW = "\033[0;33m";  // YELLOW
-    public static final String BLUE = "\033[0;34m";    // BLUE
-    public static final String PURPLE = "\033[0;35m";  // PURPLE
     public static final String CYAN = "\033[0;36m";    // CYAN
-    public static final String WHITE = "\033[0;37m";   // WHITE
     public int size;
     public Game() throws InterruptedException {
         startGame();
@@ -25,20 +20,6 @@ public class Game {
         AIGamer AIPlayer = new AIGamer();
         boolean isWon = false;
 
-//        Scanner sc = new Scanner(System.in);
-
-//        while(!isWon){
-//            if(choice==1){
-//                ticBoard.Helpboard(size);
-//                humanPlayer.makeMove(ticBoard);
-//                AIPlayer.makeMove(ticBoard);
-//            }
-//            else {
-//                ticBoard.Helpboard(size);
-//                AIPlayer.makeMove(ticBoard);
-//                humanPlayer.makeMove(ticBoard);
-//            }
-//        }
         while(!isWon){
             if(choice==1){
                 ticBoard.Helpboard(size);
@@ -55,23 +36,11 @@ public class Game {
                 humanPlayer.makeMove(ticBoard, Mark.XTYPE);
             }
         }
-        Thread.sleep(1000);
-        ticBoard.printBoard();
     }
 
 
 
-//    public void togglePlayers(int player){
-//        //player given as parameter is first player
-//        Scanner sc = new Scanner(System.in);
-//        if(player == 1){
-//            int choice = sc.nextInt();
-//            ticBoard.updateBoard(choice, 1, ticBoard.getTicBoard(), ticBoard.size);
-//        }
-//        else {
-//
-//        }
-//    }
+
     public int choosePlayer(){
 
         Scanner sc = new Scanner(System.in);
@@ -86,14 +55,7 @@ public class Game {
 
     }
 
-    public void clearTerminal(){
-        //Not exactly clearing, but looks similiar
 
-        for (int i = 0; i < 50; i++) {
-            System.out.println("");
-        }
-//        System.out.println("cleared hehe");
-    }
 
     public void chooseOption(){
         System.out.println(CYAN + "Enter proper board size");
@@ -125,12 +87,5 @@ public class Game {
 
         System.out.println(GREEN + "Great! You chose " + size + "x" + size + " board size, good choice!" + RESET );
     }
-
-
-
-
-
-
-
 
 }

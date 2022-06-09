@@ -1,7 +1,7 @@
 public enum Mark {
     BLANK,
     XTYPE,
-    OTYPE;
+    OTYPE
 
 
 }

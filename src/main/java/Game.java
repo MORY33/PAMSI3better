@@ -43,6 +43,8 @@ public class Game {
             if(choice==1){
                 ticBoard.Helpboard(size);
                 humanPlayer.makeMove(ticBoard, Mark.OTYPE);
+                System.out.println("Hm... ");
+                Thread.sleep(1500);
                 AIPlayer.makeMove(ticBoard, Mark.XTYPE);
             }
             else {

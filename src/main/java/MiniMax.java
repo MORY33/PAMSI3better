@@ -81,8 +81,9 @@ public class MiniMax {
                             Integer.MAX_VALUE, false);
                     board.updateBoard(g,board.getTicBoard(), board.size, Mark.BLANK);
                     if (moveValue > bestValue) {
-                        bestMove[0] = row;
-                        bestMove[1] = col;
+//                        bestMove[0] = row;
+//                        bestMove[1] = col;
+                        bestMove[0] = g;
                         bestValue = moveValue;
                     }
                 }

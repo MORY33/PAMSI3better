@@ -22,19 +22,16 @@ public class MiniMax {
 
 
 
-        // Maximising player, find the maximum attainable value.
+        // Maximise player
         if (isMax) {
             int highestVal = Integer.MIN_VALUE;
             int g = 1;
             for (int row = 0; row < board.size; row++) {
                 for (int col = 0; col < board.size; col++) {
-//                    if (!board.isTileMarked(row, col)) {
                     if (!board.isTaken(g, board.getTicBoard())) {
-                    //                        board.setMarkAt(row, col, X);
                         board.updateBoard(g,board.getTicBoard(), board.size, Mark.XTYPE);
                         highestVal = Math.max(highestVal, miniMax(board,
                                 depth - 1, alpha, beta, false));
-//                        board.setMarkAt(row, col, BLANK);
                         board.updateBoard(g,board.getTicBoard(), board.size, Mark.BLANK);
                         alpha = Math.max(alpha, highestVal);
                         if (alpha >= beta) {
@@ -45,10 +42,9 @@ public class MiniMax {
                 }
             }
             return highestVal;
-            // Minimising player, find the minimum attainable value;
         } else {
             int lowestVal = Integer.MAX_VALUE;
-            int g =1;
+            int g = 1;
             for (int row = 0; row < board.size; row++) {
                 for (int col = 0; col < board.size; col++) {
                     if (!board.isTaken(g, board.getTicBoard())) {
@@ -81,8 +77,6 @@ public class MiniMax {
                             Integer.MAX_VALUE, false);
                     board.updateBoard(g,board.getTicBoard(), board.size, Mark.BLANK);
                     if (moveValue > bestValue) {
-//                        bestMove[0] = row;
-//                        bestMove[1] = col;
                         bestMove[0] = g;
                         bestValue = moveValue;
                     }
@@ -96,9 +90,6 @@ public class MiniMax {
 
     private static int evaluateBoard(Board board) {
         int rowSum = 0;
-//        int bWidth = board.getWidth();
-//        int Xwin = X.getMark() * bWidth;
-//        int Owin = O.getMark() * bWidth;
 
 
         for (int row = 0; row < board.size; row++) {

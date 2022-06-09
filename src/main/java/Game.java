@@ -42,13 +42,15 @@ public class Game {
         while(!isWon){
             if(choice==1){
                 ticBoard.Helpboard(size);
-                humanPlayer.makeMove(ticBoard, Mark.OTYPE);
+                humanPlayer.makeMove(ticBoard, Mark.XTYPE);
                 System.out.println("Hm... ");
                 Thread.sleep(1500);
-                AIPlayer.makeMove(ticBoard, Mark.XTYPE);
+                AIPlayer.makeMove(ticBoard, Mark.OTYPE);
             }
             else {
                 ticBoard.Helpboard(size);
+                System.out.println("Hmm...");
+                Thread.sleep(1500);
                 AIPlayer.makeMove(ticBoard, Mark.OTYPE);
                 humanPlayer.makeMove(ticBoard, Mark.XTYPE);
             }
